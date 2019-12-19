@@ -1,9 +1,12 @@
 package com.example.springbootmybatis.mapper;
 
-import com.example.springbootmybatis.pojo.User1;
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
-import java.util.List;
+import com.example.springbootmybatis.pojo.User1;
+
+
 
 @Mapper public interface TestMapper {
   public void add(User1 test);

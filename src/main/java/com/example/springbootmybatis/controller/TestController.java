@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,19 +20,24 @@ import java.util.List;
  */
 
 
-@Controller public class TestController {
+@RestController public class TestController {
 
   @Autowired TestMapper testMapper;
 
-  @RequestMapping("/add") public void add() {
-    User1 test = new User1();
-    test.setId(12);
-    test.setName("zw");
-    test.setUsername("w");
-    test.setPassword("123456");
+  @RequestMapping("/add") public User1 add(@RequestBody User1 user) {
+    //    User1 test = new User1();
+    //    test.setId(12);
+    //    test.setName("zw");
+    //    test.setUsername("w");
+    //    test.setPassword("123456");
 
-    testMapper.add(test);
-
+    try {
+      testMapper.add(user);
+      return user;
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return null;
   }
 
   @RequestMapping("/list")
